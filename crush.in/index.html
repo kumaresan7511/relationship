@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flames.in</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="class1">
+
+    </div>
+    <div>
+        <center><h2>Your are always welcome !!,To know your crush relationship !!!</h2></center>
+    </div>
+    <div class="class2">
+        <div class="class3">
+            <form action="" onsubmit="return myfun()" id="one">
+                <label for="" id="two">Enter your Name</label>
+                <br>
+                <br>
+                <input type="text" name="name1" id="name1">
+                <br>
+                <br>
+                <label for="" id="two">Enter your crush Name</label>
+                <br>
+                <br>
+                <input type="text" name="name2" id="name2">
+                <br>
+                <br>
+                <p style="color: aqua;">Your fellings here:  <span id="myid2" style="color: red;"></span></p>
+                <br>
+                <br>
+                <input type="submit" value="calculate" onclick="myfun()">
+            </form>
+
+        </div>
+    </div>
+    <script>
+        function myfun() {
+            var name1 = document.getElementById("name1").value;
+            var name2 = document.getElementById("name2").value;
+            var status = false;
+            var arr1 = new Array();
+            var arr2 = new Array();
+            var arr3 = new Array();
+            for (let i = 0; i < name1.length; i++) {
+                arr1[i] = name1.charAt(i);
+            }
+            for (let i = 0; i < name2.length; i++) {
+                arr2[i] = name2.charAt(i);
+            }
+            for (let i = 0; i < arr1.length; i++) {
+                for (let j = 0; j < arr2.length; j++) {
+                    if (arr1[i] === arr2[j]) {
+                        arr3[i] = arr2[j];
+                        arr2.splice(j, 1);
+                    }
+                }
+            }
+            for (let i = 0; i < arr3.length; i++) {
+                for (let j = 0; j < arr1.length; j++) {
+                    if (arr3[i] === arr1[j]) {
+                        arr1.splice(j, 1)
+                    }
+                }
+            }
+            var a = arr1.length;
+            var b = arr2.length;
+            var c = a + b;
+            var at = { 1: "Friend", 2: "Love", 3: "Affection", 4: "Marriage", 5: "Enemy", 6: "Sister" }
+            if (c <= 6) {
+                document.getElementById("myid2").innerHTML = at[c];
+                status = false;
+            }
+            else {
+                var t = c % 6;
+                if(t==0){
+                    document.getElementById("myid2").innerHTML = at[6];
+                    status = false;  
+                }
+                else{
+                    document.getElementById("myid2").innerHTML = at[t];
+                 status = false;
+                }
+            }
+            return status;
+        }
+    </script>
+</body>
+
+</html>
